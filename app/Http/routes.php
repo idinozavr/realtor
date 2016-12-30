@@ -11,4 +11,5 @@
 |
 */
 
-get('/', ['as'=>'posts', 'uses'=>'PostController@index']);
+get('/', ['as'=>'main', 'uses'=>'MainController@index']);
+get('/auth', ['as'=>'auth', 'uses'=>'AuthController@index']);
