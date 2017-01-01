@@ -2880,7 +2880,38 @@ section#wrng_pg .btns a.orn_btn {
 		text-align:center;
 		margin-bottom:20px;
 }
+.control-label sup, .checkbox-inline sup{
+    color:#ad3b3b;
+}
+form#register-form span.text-error,
+form#repeat-form span.text-error{
+	color:#ad3b3b;
+	display:block;
+  font-size: 14px;
+  line-height: 14px;
+  white-space:nowrap;
+  padding:6px 14px;
+}
 
+form#register-form .checkbox-inline span.text-error {
+	position:absolute;
+	top:-25px;
+	left:0;
+	background:#bf5858;
+  border-radius:4px;
+  color:#fff;
+}
+form#register-form .checkbox-inline span.text-error::after {
+    content: '';
+    position: absolute;
+    left: 20px; bottom: -20px;
+    border: 10px solid transparent;
+    border-top: 10px solid #bf5858;
+}
+
+form#register-form input.error, form#repeat-form input.error {
+	border:1px solid #ad3b3b;
+}
 /* 24. Responsive Styles
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

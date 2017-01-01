@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\News;
 
-
-class MainController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(News $newsModal)
     {
-
-        return view('main.index');
+        $news = $newsModal->getLastNews();
+        return view('news.news', ['news' => $news]);
     }
 
     /**
