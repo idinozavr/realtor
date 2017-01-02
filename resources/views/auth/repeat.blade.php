@@ -17,7 +17,7 @@
                         @if(!Session::has('message'))
                             <div id="my-tab-content" class="tab-content">
                                 <h2>Повторная отправка письма с подтверждением.</h2>
-                                <form id="repeat-form" class="form-horizontal" method="POST" action="/repeat_confirm">
+                                <form id="main-form" class="form-horizontal" method="POST" action="/repeat_confirm">
                                     {!! csrf_field() !!}
                                     <div class="form-group">
                                         <label class="control-label col-xs-3" for="inputEmail">Email:<sup>*</sup></label>

@@ -11,16 +11,33 @@
 |
 */
 
-// Маршруты аутентификации...
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Маршруты регистрации...
-Route::post('auth/register', 'RegisterController@register');
-Route::get('register/confirm/{token}', 'RegisterController@confirm');
-Route::get('/repeat_confirm','RegisterController@getRepeat');
-Route::post('/repeat_confirm','RegisterController@postRepeat');
+Route::group(['middleware' => 'guest'], function (){
+
+    // Маршруты аутентификации...
+    Route::post('auth/login', 'AuthController@postLogin');
+
+    // Маршруты регистрации...
+    Route::post('auth/register', 'RegisterController@register');
+    Route::get('register/confirm/{token}', 'RegisterController@confirm');
+    Route::get('/repeat_confirm','RegisterController@getRepeat');
+    Route::post('/repeat_confirm','RegisterController@postRepeat');
+
+    // Маршруты запроса ссылки для сброса пароля...
+    Route::get('password', 'PasswordController@index');
+    Route::post('password', 'PasswordController@postEmail');
+
+    // Маршруты сброса пароля...
+    Route::get('password_reset/{token}', 'PasswordController@getReset');
+    Route::post('password_reset', 'PasswordController@postReset');
+});
 
 get('/', ['as'=>'main', 'uses'=>'MainController@index']);
-get('/auth', ['as'=>'auth', 'uses'=>'AuthController@index']);
+
+// Аутентификация и Выход
+get('/auth', ['as'=>'auth', 'middleware' => 'guest', 'uses'=>'AuthController@index']);
+get('/auth/logout', ['as'=>'logout','middleware' => 'auth', 'uses' => 'AuthController@getLogout']);
+
+// Разделы
 get('/news', ['as'=>'news', 'uses'=>'NewsController@index']);
+get('/profile', ['as'=>'profile', 'middleware' => 'auth', 'uses'=>'ProfileController@index']);

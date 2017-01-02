@@ -68,10 +68,21 @@
         $('#register-form').find(".form-control").removeClass('error');
     })
 
-    $('#repeat-form').on('submit', function (event) {
+
+    $('#login-form').on('submit', function (event) {
         if ( validateForm(event,{}) ) {
             event.preventDefault();
         }
+    })
+
+    $('#main-form').on('submit', function (event) {
+        if ( validateForm(event,{}) ) {
+            event.preventDefault();
+        }
+    })
+    $('#main-form').on('reset', function () {
+        $('#main-form').find(".text-error").remove();
+        $('#main-form').find(".form-control").removeClass('error');
     })
 
 

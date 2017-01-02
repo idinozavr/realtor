@@ -12,21 +12,21 @@
     <title>Сайт продажи недвижимости</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{{asset("css/bootstrap.css")}}" rel="stylesheet">
 
     <!-- Owl Carousel Assets -->
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
+    <link href="{{asset("css/owl.carousel.css")}}" rel="stylesheet">
+    <link href="{{asset("css/owl.theme.css")}}" rel="stylesheet">
+    <link href="{{asset("css/owl.transitions.css")}}" rel="stylesheet">
 
     <!-- Flexslider CSS -->
-    <link href="css/flexslider.css" rel="stylesheet">
+    <link href="{{asset("css/flexslider.css")}}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/main_style.css" rel="stylesheet">
+    <link href="{{asset("css/main_style.css")}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset("font-awesome/css/font-awesome.min.css")}}" rel="stylesheet" type="text/css">
 
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
@@ -89,7 +89,12 @@
             <div class="col-xs-12 col-md-6 top_rgt">
                 <div class="sig_in">
                     <p><i class="fa fa-user"></i>
-                        <a href="#login_box" class="log_btn" data-toggle="modal"> Sign in </a> or <a class="reg_btn" href="#reg_box" data-toggle="modal"> create account </a> </p>
+                        @if (Auth::user())
+                        <a href="/profile" class="log_btn">Профиль</a> / <a href="/auth/logout" class="log_btn">Выйти</a>
+                        @else
+                        <a href="/auth" class="log_btn"> Войти / Зарегистрироваться </a>
+                        @endif
+                    </p>
                 </div>
                 <div class="submit_prop">
                     <h3 class="subm_btn"><a href="#prop_box" data-toggle="modal">
@@ -118,7 +123,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- Logo -->
-            <a class="navbar-brand" href="/"><img src="images/logo.png" alt="logo">
+            <a class="navbar-brand" href="/"><img src="{{asset("images/logo.png")}}" alt="logo">
             </a>
         </div>
         <!-- Navigation -->
@@ -155,9 +160,6 @@
                 </li>
                 <li>
                     <a href="{!! route('news') !!}">Новости</a>
-                </li>
-                <li>
-                    <a href="{!! route('auth') !!}">Авторизация</a>
                 </li>
                 <li>
                     <a class="" href="contact.html">Contact</a>
@@ -280,88 +282,6 @@
 </footer>
 
 <!-- Modal HTML -->
-<div id="login_box" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="log_form">
-                    <h2 class="frm_titl"> Login Form </h2>
-                    <form name="sentMessage" id="loginForm" novalidate>
-                        <div class="control-group form-group">
-                            <div class="controls">
-                                <input type="text" class="form-control" id="u-name" required data-validation-required-message="Please enter your username." placeholder="Username">
-                                <p class="help-block"></p>
-                            </div>
-
-                            <div class="controls">
-                                <input type="password" class="form-control" id="password" required data-validation-required-message="Please enter your password." placeholder="Password">
-
-                                <p class="help-block"></p>
-                            </div>
-                            <div class="checkbox col-md-6">
-                                <label>
-                                    <input type="checkbox"> Remember me
-                                </label>
-                            </div>
-                            <div class="forg_pass col-md-6 text-right">
-                                <a class="" href="#"> Forgot your password?  </a>
-                            </div>
-                            <div class="clearfix"></div>
-
-                            <button type="submit" class="btn btn-primary">Sign In</button>
-                            <div id="success2"></div>
-                            <!-- For success/fail messages -->
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="reg_box" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <div class="log_form">
-                    <h2 class="frm_titl"> Create Account </h2>
-                    <form name="sentMessage" id="RegisForm" novalidate>
-                        <div class="control-group form-group">
-                            <div class="controls">
-                                <input type="text" class="form-control" id="username" required data-validation-required-message="Please enter your username." placeholder="Username">
-                                <p class="help-block"></p>
-                            </div>
-
-                            <div class="controls">
-                                <input type="email" class="form-control" id="e-mail" required data-validation-required-message="Please enter your email." placeholder="Email">
-                                <p class="help-block"></p>
-                            </div>
-
-                            <div class="controls">
-                                <input type="password" class="form-control" id="passd" required data-validation-required-message="Please enter your password." placeholder="Password">
-
-                                <p class="help-block"></p>
-                            </div>
-                            <div class="controls">
-                                <input type="password" class="form-control" id="re-passd" required data-validation-required-message="Please enter your password." placeholder="Retype Password">
-
-                                <p class="help-block"></p>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Create Account</button>
-                            <div id="success3"></div>
-                            <!-- For success/fail messages -->
-                        </div>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div id="prop_box" class="modal fade">
     <div class="modal-dialog">
@@ -436,20 +356,20 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery.js"></script>
+<script src="{{asset("js/jquery.js")}}"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{{asset("js/bootstrap.min.js")}}"></script>
 
 <!-- Owl Carousel JavaScript -->
-<script src="js/owl.carousel.min.js"></script>
+<script src="{{asset("js/owl.carousel.min.js")}}"></script>
 
 <!-- Flexslider JavaScript -->
-<script src="js/jquery.flexslider-min.js"></script>
+<script src="{{asset("js/jquery.flexslider-min.js")}}"></script>
 
 
 <!-- Script to Activate the Carousels -->
-<script src="js/main.js"></script>
+<script src="{{asset("js/main.js")}}"></script>
 
 
 </body>

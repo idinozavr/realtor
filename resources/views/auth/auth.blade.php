@@ -22,24 +22,27 @@
                     <div id="my-tab-content" class="tab-content">
                         <div class="tab-pane fade in active" id="userauth">
                             <h2>Авторизация</h2>
-                            <form class="form-horizontal" method="POST" action="/auth/login">
+                            <form id="login-form" class="form-horizontal" method="POST" action="/auth/login">
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label for="inputEmail" class="col-xs-3 control-label">Адрес email:</label>
                                     <div class="col-xs-9">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Введите email" name="email" value="{{ old('email') }}">
+                                        <input type="email" class="form-control" dataValid="email" id="inputEmail" placeholder="Введите email" name="email" value="{{ old('email') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputPassword" class="col-xs-3 control-label" name="password">Пароль:</label>
                                     <div class="col-xs-9">
-                                        <input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль">
+                                        <input type="password" class="form-control" dataValid="pass" id="inputPassword" placeholder="Введите пароль" name="password">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-offset-3 col-xs-9">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" name="remember"> Запомнить</label>
+                                        <div class="checkbox inline-block">
+                                            <label><input type="checkbox" name="remember" value="true"> Запомнить</label>
+                                        </div>
+                                        <div class="forget_pass inline-block">
+                                            <a href="/password">Забыли пароль?</a>
                                         </div>
                                     </div>
                                 </div>

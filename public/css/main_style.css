@@ -2870,7 +2870,7 @@ section#wrng_pg .btns a.orn_btn {
 #myauth #content{
 		border-radius:5px;
     margin:40px 0 40px 0;
-    padding:10px;
+    padding:20px;
     border: 1px solid #C8C8C6;
     background:#F9F9F9;
     box-shadow: 0 0 5px 3px rgba(221, 221, 221, 1);
@@ -2880,11 +2880,18 @@ section#wrng_pg .btns a.orn_btn {
 		text-align:center;
 		margin-bottom:20px;
 }
+#myauth #content .inline-block{
+    display: inline-block;
+}
+#myauth #content .forget_pass{
+    padding-left: 30px;
+}
 .control-label sup, .checkbox-inline sup{
     color:#ad3b3b;
 }
 form#register-form span.text-error,
-form#repeat-form span.text-error{
+form#main-form span.text-error,
+form#login-form span.text-error{
 	color:#ad3b3b;
 	display:block;
   font-size: 14px;
@@ -2909,7 +2916,9 @@ form#register-form .checkbox-inline span.text-error::after {
     border-top: 10px solid #bf5858;
 }
 
-form#register-form input.error, form#repeat-form input.error {
+form#register-form input.error,
+form#main-form input.error,
+form#login-form input.error {
 	border:1px solid #ad3b3b;
 }
 /* 24. Responsive Styles

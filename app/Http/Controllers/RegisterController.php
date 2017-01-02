@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Models\User;
 use App\Models\ConfirmUser;
 use Illuminate\Support\Facades\Mail;
@@ -40,7 +41,7 @@ class RegisterController extends Controller
             } else {
                 return redirect()->back()->with('message',
                     '<p>Пользователь с таким email уже зарегестрирован.</p>'
-                    . '<p>Забыли пароль?</p>'
+                    . '<p><a href="/password">Забыли пароль?</a></p>'
                 );
             }
         }
@@ -104,9 +105,12 @@ class RegisterController extends Controller
 
         $model->delete();
 
+        Auth::login($user);
+
         return redirect('/auth')->with('message','<p>Ваш e-mail успешно подтвержден.</p>'
         . '<p>Регистрация завершена</p>'
         . '<p>Вы можете перейти на <a href="/">главную страницу</a></p>'
+        . '<p>Или войти в профиль <a href="/profile">в профиль</a></p>'
         );
 
     }
